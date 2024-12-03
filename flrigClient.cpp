@@ -79,3 +79,16 @@ void FlrigClient::printAttr() {
   std::cout << "Frequenz VFO B: " << freqVfoB << std::endl;
   std::cout << std::endl;
 }
+
+void FlrigClient::setCurrentVfo(const double freq) {
+
+  xmlrpc_c::clientSimple myClient;
+  std::string serverUrl = "http://" + host + ":" + port;
+  xmlrpc_c::value result;
+  myClient.call(serverUrl, "rig.set_vfo", "d", &result, freq);
+  const std::string response = xmlrpc_c::value_string(result);
+  freqCurrentVfo = response;
+
+}
+
+

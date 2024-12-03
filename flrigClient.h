@@ -122,6 +122,8 @@ class FlrigClient {
     
     void printAttr();    
 
+    void setCurrentVfo(const double);
+
   private:
 
     void setAllAttr();

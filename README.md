@@ -30,3 +30,11 @@ g++ -o flrigTest flrigTest.cpp flrigClient.h flrigClient.cpp `xmlrpc-c-config c+
 - Achtung! Der String am Ende enhaelt "Backquotes" (Kommandosubstitution Bash)
   nicht mit einfachen Anfuehrungszeichen verwechseln!
 
+3. ausfuerbare Datei starten mit 
+   ./flrigTest
+
+Die Dateien flrigClient.h und flrigClient.cpp enthalten eine Klasse die die Funktionen der 
+XMLRPC-Bibliotheken grob fuer eigene Aufrufe kapselt.
+Das Testprogramm liesst zuerst ein paar Parameter aus dem Transceiver aus und ermoeglicht
+dann einen Test bezueglich Frequenzwechsel via Eingabe.
+
