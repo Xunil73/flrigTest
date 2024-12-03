@@ -1,9 +1,13 @@
 #include <iostream>
 #include "flrigClient.h"
 
+
+// Konstruktor - verlangt die IP-Adresse des Flrig-Servers sowie den Port
 FlrigClient::FlrigClient(const std::string hostStr, const std::string portStr)
   : host{hostStr}, port{portStr} { setAllAttr(); }
 
+/* private Hilfsmethode - wir fuellen alle Attribute der Klasse bei Instanzierung
+   indem wir alle aktuellen Werte des Transceivers einmal abfragen */
 void FlrigClient::setAllAttr() {
   std::string serverUrl = "http://" + host + ":" + port;
   xmlrpc_c::clientSimple myClient;
@@ -60,6 +64,7 @@ void FlrigClient::setAllAttr() {
   }
 }
 
+// einfache Bildschirmausgabe aller gespeicherten Werte
 void FlrigClient::printAttr() {
   std::cout << "aktueller VFO: " << vfoCurrentInUse << std::endl;
   std::cout << "Rig Info Text: " << rigInfo << std::endl;
@@ -80,6 +85,10 @@ void FlrigClient::printAttr() {
   std::cout << std::endl;
 }
 
+/* einfache Setter-Methode zum Einstellen der Frequenz - 
+   Achtung!!! der Rueckgabewert stimmt nicht mit der Dokumentation
+   der Kommandotabelle von flrig ueberein! Dort wird als Rueckgabewert
+   double angegeben, tatsaechlich wird jedoch ein Stringobjekt ausgespuckt */
 void FlrigClient::setCurrentVfo(const double freq) {
 
   xmlrpc_c::clientSimple myClient;

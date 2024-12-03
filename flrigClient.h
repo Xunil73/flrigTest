@@ -103,7 +103,7 @@ rig.vfoA2B                n:n  set vfo B to vfo A freq/mode
 rig.freqA2B               n:n  set freq B to freq A
 rig.modeA2B               n:n  set mode B to mode A
 rig.cmd                   n:i  execute command button 1..24; 25..48(shift)
-compile with: g++ -o flrigTest flrigTest.cpp `xmlrpc-c-config c++2 client --libs`
+
 */
 
 
@@ -126,11 +126,14 @@ class FlrigClient {
 
   private:
 
-    void setAllAttr();
+    void setAllAttr(); /* priv Methode zum fuellen aller 
+    Werte bei der Instanzierung eines FlrigClient Objekts */
     
     const std::string host;
     const std::string port;
 
+    /* hier speichern wir alle aktuellen Einstellungen des Transceivers ab
+       um sie spaeter kreativ zu verwenden */
     std::string vfoCurrentInUse;
     std::string rigInfo;
     std::string modeOfVfoCurrentInUse;
